@@ -103,3 +103,8 @@ async def update_user(okta_client: OktaClient, user_id: str) -> None:
     click.echo("Updating user...\n")
     updated_user, resp, err = await okta_client.update_user(user_id, user)
     click.echo("User updated...\n")
+
+
+async def delete_user(okta_client: OktaClient, user_id: str) -> None:
+    resp, err = await okta_client.deactivate_or_delete_user(user_id)
+    resp, err = await okta_client.deactivate_or_delete_user(user_id)

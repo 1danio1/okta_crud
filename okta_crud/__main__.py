@@ -62,5 +62,14 @@ def update_user(context: Context, user: str) -> None:
     loop.run_until_complete(okta.update_user(context.obj["client"], user))
 
 
+@users.command("delete")
+@click.pass_context
+@click.option("-u", "--user", type=str, required=True, help="Okta user ID")
+def delete_user(context: Context, user: str) -> None:
+    """Deletes user"""
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(okta.delete_user(context.obj["client"], user))
+
+
 if __name__ == "__main__":
     cli(obj={})
